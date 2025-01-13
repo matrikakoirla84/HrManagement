@@ -2,11 +2,6 @@
 using HrManagement.Core.Repositories;
 using HrManagement.Infrastructure.DBContext;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HrManagement.Infrastructure.Repositories
 {

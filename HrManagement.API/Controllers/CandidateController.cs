@@ -13,9 +13,13 @@ namespace HrManagement.API.Controllers
         [Route("AddUpdate")]
         [ProducesResponseType(typeof(CommonResponse), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> RegisterUser(AddUpdateCandidateCommand objAddUpdateCandidateCommand)
+        public async Task<IActionResult> AddUpdateCandidate(AddUpdateCandidateCommand objAddUpdateCandidateCommand)
         {
-            return Ok(await _mediator.Send(objAddUpdateCandidateCommand));
+            var objCommonResponse = await _mediator.Send(objAddUpdateCandidateCommand);
+            if (objCommonResponse == null) { 
+                return NotFound();
+            }
+            return Ok(objCommonResponse);
         }
     }
     
