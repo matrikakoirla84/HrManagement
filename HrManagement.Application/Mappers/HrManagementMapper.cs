@@ -15,7 +15,7 @@ namespace HrManagement.Application.Mappers
             {
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsAssembly;
 
-                //cfg.AddProfile<HomeMappingProfile>();
+                cfg.AddProfile<CandidateMappingProfile>();
             });
             var mapper = config.CreateMapper();
             return mapper;

@@ -1,5 +1,4 @@
-﻿using HrManagement.Core.ModelEntities.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HrManagement.Core.ModelEntities.Candidate
 {
-    public class CandidateInfo: CommonRequest
+    public class CandidateInfo
     {
         [Key]
         public int Id { get; set; }
@@ -20,7 +19,8 @@ namespace HrManagement.Core.ModelEntities.Candidate
         public string LinkedInProfile { get; set; }
         public string GitHubProfile { get; set; }
         public string Remarks { get; set; }
-       
+        public string CreatedBy { get; set; }
+        public DateTime CreatedTs { get; set; } = DateTime.UtcNow;
 
     }
 }

@@ -20,31 +20,54 @@ namespace HrManagement.Application.Handlers.CandidateHandler
         {
             try
             {
-                var returnedEmail = await _candidateRepository.GetUser(command.Email);
+                var objExistingCandidateInfo = await _candidateRepository.GetUser(command.Email);
                 var objCandidateInfo = HrManagementMapper.Mapper.Map<CandidateInfo>(command);
 
-                if (returnedEmail != null) {
+                if (objExistingCandidateInfo is null) {
 
                     int id = await _candidateRepository.AddCandidate(objCandidateInfo);
                     if (id > 0)
                     {
-                        return new CommonResponse();
+                        return new CommonResponse()
+                        {
+                            Success=true,
+                            Code="000",
+                            Message="Successfully Added"
+                        };
                     }
                     else
                     {
-                        return new CommonResponse();
+                        return new CommonResponse()                        
+                        {
+                            Success=false,
+                            Code="111",
+                            Message="Unable to Add Candidate Details"
+                        };
+                        
                     }
                 }
                 else
                 {
+                    objCandidateInfo.Id = objExistingCandidateInfo.Id;
                     int id = await _candidateRepository.UpdateCandidate(objCandidateInfo);
                     if (id > 0)
                     {
-                        return new CommonResponse();
+                        return new CommonResponse()
+                        {
+                            Success = true,
+                            Code = "000",
+                            Message = "Successfully Updated"
+                        };
                     }
                     else
                     {
-                        return new CommonResponse();
+                        return new CommonResponse()
+                        {
+                            Success = false,
+                            Code = "222",
+                            Message = "Unable to Update Candidate Details"
+                        };
+
                     }
                 }
 
