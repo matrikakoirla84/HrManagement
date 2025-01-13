@@ -18,6 +18,7 @@ namespace HrManagement.Application.Commands
         public string TimeAvailable { get; set; }
         public string LinkedInProfile {  get; set; }
         public string GitHubProfile {  get; set; }
+        [Required]
         public string Remarks {  get; set; }
     }
 }
